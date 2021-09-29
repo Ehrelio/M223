@@ -30,7 +30,9 @@ public class EntryService {
 
     @Transactional
     public void delEntryId(Long id) {
-        entityManager.createQuery("delete from Entry where id = :id");
+        Entry entry = entityManager.find(Entry.class, id);
+        entityManager.remove(entry);
+
     }
 
     @SuppressWarnings("unchecked")
@@ -39,6 +41,7 @@ public class EntryService {
         return query.getResultList();
     }
 
+    @Transactional
     public Entry getEntry(Long id){
         return entityManager.find(Entry.class, id);
     }

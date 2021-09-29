@@ -6,14 +6,14 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
+import java.util.List;
 
 @ApplicationScoped
 public class HolidayService {
     @Inject
     private EntityManager entityManager;
 
-    public UserService(){
-
+    HolidayService(){
     }
 
     @Transactional
@@ -34,6 +34,19 @@ public class HolidayService {
     }
 
     @Transactional
-    a
+    public Holiday getUser(int id){
+        return entityManager.find(Holiday.class, id);
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Holiday> findAll(){
+        var query = entityManager.createQuery("FROM Holiday");
+        return query.getResultList();
+    }
+
+    @Transactional
+    public Holiday updateHoliday(Holiday holiday){
+        return entityManager.merge(holiday);
+    }
 }
 

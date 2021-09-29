@@ -40,6 +40,7 @@ public class UserService {
         return query.getResultList();
     }
 
+    @Transactional
     public User getUser(Long id){
         return entityManager.find(User.class, id);
     }
