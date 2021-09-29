@@ -28,13 +28,13 @@ public class HolidayService {
     }
 
     @Transactional
-    public void delHolidayId(int id){
+    public void delHolidayId(Long id){
         Holiday holiday = entityManager.find(Holiday.class, id);
         entityManager.remove(holiday);
     }
 
     @Transactional
-    public Holiday getUser(int id){
+    public Holiday getHoliday(Long id){
         return entityManager.find(Holiday.class, id);
     }
 
