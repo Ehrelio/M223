@@ -18,6 +18,9 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Entry> entries;
 
+    @OneToMany(mappedBy = "user")
+    private List<Holiday> holidays;
+
     public Long getId() {
         return id;
     }

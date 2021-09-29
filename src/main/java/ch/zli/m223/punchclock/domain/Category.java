@@ -17,6 +17,8 @@ public class Category {
     @OneToMany(mappedBy = "category")
     private List<Entry> entries;
 
+    @OneToMany(mappedBy = "category")
+
     public Long getId() {
         return id;
     }

@@ -19,6 +19,12 @@ public class Holiday {
     @Column(nullable = false)
     private String holidayReason;
 
+    @ManyToOne
+    private Category category;
+
+    @ManyToOne
+    private User user;
+
     public Long getId() {
         return id;
     }
