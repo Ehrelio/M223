@@ -18,6 +18,15 @@ public class Category {
     private List<Entry> entries;
 
     @OneToMany(mappedBy = "category")
+    private List<Holiday> holidays;
+
+    public List<Holiday> getHolidays() {
+        return holidays;
+    }
+
+    public void setHolidays(List<Holiday> holidays) {
+        this.holidays = holidays;
+    }
 
     public Long getId() {
         return id;

@@ -32,7 +32,6 @@ public class EntryService {
     public void delEntryId(Long id) {
         Entry entry = entityManager.find(Entry.class, id);
         entityManager.remove(entry);
-
     }
 
     @SuppressWarnings("unchecked")
@@ -41,7 +40,6 @@ public class EntryService {
         return query.getResultList();
     }
 
-    @Transactional
     public Entry getEntry(Long id){
         return entityManager.find(Entry.class, id);
     }

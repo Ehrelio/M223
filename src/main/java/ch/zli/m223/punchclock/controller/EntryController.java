@@ -17,6 +17,10 @@ import org.jboss.resteasy.annotations.jaxrs.PathParam;
 @Tag(name = "Entries", description = "Handling of entries")
 public class EntryController {
 
+    //entitymanager.find(entry.class, id) -- ein eintrag nur mit der id holen
+    //@Transactional -- bei errors in service(bei daten ändern)
+    //merge um update zu machen
+    //neue klasse -- statisch bedeutet keine klassen dazu
 
     @Inject
     EntryService entryService;

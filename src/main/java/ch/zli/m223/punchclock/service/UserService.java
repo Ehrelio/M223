@@ -1,6 +1,5 @@
 package ch.zli.m223.punchclock.service;
 
-import ch.zli.m223.punchclock.domain.Holiday;
 import ch.zli.m223.punchclock.domain.User;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -40,7 +39,6 @@ public class UserService {
         return query.getResultList();
     }
 
-    @Transactional
     public User getUser(Long id){
         return entityManager.find(User.class, id);
     }
