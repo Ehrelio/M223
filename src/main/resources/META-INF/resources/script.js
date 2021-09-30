@@ -15,9 +15,9 @@ const createEntry = (e) => {
     entry['checkIn'] = dateAndTimeToDate(formData.get('checkInDate'), formData.get('checkInTime'));
     entry['checkOut'] = dateAndTimeToDate(formData.get('checkOutDate'), formData.get('checkOutTime'));
 
-    const jiraStat = {};
-    jiraStat['jiraNumber'] = formData.get('jnumber');
-    jiraStat['achievement'] = formData.get('achievement')
+    const holiday =  {};
+    holiday['startDate'] = date(formData.get('startDate'));
+    holiday['endDate'] = date(formData.get('endDate'));
 
     const category = {};
     category['text'] = formData.get('admin');
@@ -74,50 +74,5 @@ document.addEventListener('DOMContentLoaded', function(){
     indexEntries();
     indexBreak();
 });
-
-
-const renderBreaks = () => {
-    const display = document.querySelector('#breaksDisplay');
-    display.innerHTML = '';
-    entries.forEach((brake) => {
-        const row = document.createElement('tr');
-        row.appendChild(createCell(brake.id));
-        row.appendChild(createCell(String(brake.hours)));
-        display.appendChild(row);
-    });
-};
-
-const createBreak = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-
-    const brake = {};
-    brake['hours'] = formData.get('breaktime');
-
-    fetch(`${URL}/breaks`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(brake)
-    }).then((result) => {
-        result.json().then((brake) => {
-            breaks.push(brake);
-            renderBreaks();
-        });
-    });
-};
-
-const indexBreak = () => {
-    fetch(`${URL}/breaks`, {
-        method: 'GET'
-    }).then((result) => {
-        result.json().then((result) => {
-            breaks = result;
-            renderBreaks();
-        });
-    });
-    renderBreaks();
-};
 
 
